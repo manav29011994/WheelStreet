@@ -58,12 +58,13 @@ public class ChatReviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 js=generateJsonbject();
- /*               JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                JsonObjectRequest jsonObjReq = new JsonObjectRequest(
                         Request.Method.POST,URL_To_SEND, js,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
                                 Toast.makeText(ChatReviewActivity.this,"Data Posted Successfully",Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         }, new Response.ErrorListener() {
 
@@ -74,16 +75,14 @@ public class ChatReviewActivity extends AppCompatActivity {
                     }
                 }) {
 
-                    *//**
-                     * Passing some request headers
-                     * *//*
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
                         headers.put("Content-Type", "application/json; charset=utf-8");
                         return headers;
                     }
-                };*/
+                };
+                AppController.getInstance(ChatReviewActivity.this).addtoRequestQueue(jsonObjReq);
             }
         });
 
